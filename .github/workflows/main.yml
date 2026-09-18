@@ -19,5 +19,12 @@ jobs:
             -scheme MatrixTest \
             -sdk iphoneos \
             -configuration Debug \
+            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             build
+
+      - name: Carica app compilata
+        uses: actions/upload-artifact@v4
+        with:
+          name: MatrixTest-app
+          path: "build/Build/Products/Debug-iphoneos/Matrix Test.app"
