@@ -246,6 +246,4 @@ extension ShapeStyle where Self == Color {
         Color.cyan
     }
 }
-static var matrixCyan: Color {
-    Color.cyan
-}
+
