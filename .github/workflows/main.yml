@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: macos-26
+
     steps:
       - name: Scarica il codice
         uses: actions/checkout@v4
@@ -23,11 +24,11 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             build
 
-      - name: Crea file IPA
+      - name: Crea IPA
         run: |
           mkdir -p Payload
           cp -R "build/Build/Products/Debug-iphoneos/Matrix Test.app" "Payload/Matrix Test.app"
-          zip -r MatrixTest.ipa Payload
+          /usr/bin/zip -r -y MatrixTest.ipa Payload
 
       - name: Carica IPA
         uses: actions/upload-artifact@v4
