@@ -12,12 +12,6 @@ jobs:
       - name: Scarica il codice
         uses: actions/checkout@v4
 
-      - name: Compila app iOS
+      - name: Mostra gli scheme disponibili
         run: |
-          xcodebuild \
-            -project iOS/MatrixTest.xcodeproj \
-            -scheme "Matrix Test" \
-            -sdk iphoneos \
-            -configuration Debug \
-            CODE_SIGNING_ALLOWED=NO \
-            build
+          xcodebuild -project iOS/MatrixTest.xcodeproj -list
