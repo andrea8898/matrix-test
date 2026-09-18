@@ -233,3 +233,12 @@ struct MatrixIcon: View { var body: some View { Text("0101\n0110\n1001\n0101").f
 struct MatrixRain: View { var body: some View { GeometryReader { proxy in ForEach(0..<52, id: \.self) { i in Text((0..<38).map { _ in Bool.random() ? "1" : "0" }.joined(separator: "\n")).font(.system(size: 11, design: .monospaced)).foregroundStyle(.matrixGreen).opacity(0.4).position(x: CGFloat(i) * proxy.size.width / 51, y: proxy.size.height / 2) } } } }
 struct MatrixButtonStyle: ButtonStyle { func makeBody(configuration: Configuration) -> some View { configuration.label.frame(maxWidth: .infinity).padding(13).foregroundStyle(Color.matrixGreen).background(Color.matrixGreen.opacity(configuration.isPressed ? 0.35 : 0.16)).overlay(Rectangle().stroke(Color.matrixGreen)) } }
 extension Color { static let matrixGreen = Color(red: 0.39, green: 1, blue: 0.62); static let matrixCyan = Color(red: 0.44, green: 0.93, blue: 1); static let matrixMuted = Color(red: 0.53, green: 0.68, blue: 0.58); static let matrixBlack = Color(red: 0.01, green: 0.03, blue: 0.02) }
+extension ShapeStyle where Self == Color {
+    static var matrixGreen: Color {
+        Color(red: 0.1, green: 1.0, blue: 0.3)
+    }
+
+    static var matrixMuted: Color {
+        Color.gray
+    }
+}
