@@ -23,8 +23,14 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             build
 
-      - name: Carica app compilata
+      - name: Crea file IPA
+        run: |
+          mkdir -p Payload
+          cp -R "build/Build/Products/Debug-iphoneos/Matrix Test.app" "Payload/Matrix Test.app"
+          zip -r MatrixTest.ipa Payload
+
+      - name: Carica IPA
         uses: actions/upload-artifact@v4
         with:
-          name: MatrixTest-app
-          path: "build/Build/Products/Debug-iphoneos/Matrix Test.app"
+          name: MatrixTest-IPA
+          path: MatrixTest.ipa
